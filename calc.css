@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  width: 20%;
+  border-radius: 0;
+  border: none;
+  background-color: whitesmoke;
+  min-height: 2.2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(225, 252, 252);
+  font-weight: bolder;
+}
+
+.calc-container {
+  width: 50%;
+  margin: auto auto;
+  padding: 1%;
+  border: 1px solid black;
+  box-shadow: 0.5rem 0.5rem 1rem grey, -0.5rem 0.5rem 1rem grey;
+}
+
+.output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.trigoBtn {
+  width: 100%;
+  background-color: whitesmoke;
+  border: 1px solid lightgrey;
+}
+
+.trigo {
+  position: relative;
+}
+
+
+.trigo-options {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  border: 1px solid lightgrey;
+  box-shadow: 0.5rem 0.5rem 1rem grey;
+}
+
+.active {
+  background-color: greenyellow;
+  color: black;
+  font-weight: bold;
+}
+
+.answer{
+  font-weight: bolder;
+  font-size: larger;
+}
+.calculate {
+  background-color: rgb(141, 177, 243);
+  color: black;
+  font-weight: bolder;
+}
+
+button > span {
+  font-size: 0.6rem;
+  position: absolute;
+}
+
+.delete:hover{
+  background-color: rgb(247, 93, 93);
+}
+
+.new-row{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.new-row > *{
+  padding: 1rem;;
+}
+
+.new-row p:hover{
+  cursor: pointer;
+  background-color: rgb(225, 252, 252);
+}
