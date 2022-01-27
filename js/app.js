@@ -1,9 +1,10 @@
 import { btns, trigoBtns, firstRowBtns } from "./data.js";
 import varManager from "./manager.js";
 /*
-This is IIFE used to Design the Web Page
+This is Namepace used to Design the Web Page
 */
-(function () {
+var GenerateHtml;
+(function (GenerateHtml) {
     firstRowBtns.forEach(element => {
         let lastRow = document.querySelector(".row:last-child");
         lastRow.innerHTML += `<button id="${element.text}" class="${element.operation}">${element.text}</button>`;
@@ -78,4 +79,4 @@ This is IIFE used to Design the Web Page
     allButtons.forEach(btn => {
         btn.addEventListener("click", varManager.clickCallback);
     });
-})();
+})(GenerateHtml || (GenerateHtml = {}));

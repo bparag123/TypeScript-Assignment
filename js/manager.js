@@ -3,7 +3,8 @@ import CalculatorUtils from "./utils.js";
 /*This is IIFE which is used to Initialise the Variables and create a private Scope of
  some variables
 */
-let varManager = (function () {
+var varManager;
+(function (varManager) {
     let inputContainer = document.querySelector(".input-container");
     let radBtn = document.getElementById("rad");
     inputContainer.innerHTML = `<div class="row"></div>`;
@@ -69,7 +70,7 @@ let varManager = (function () {
         return n * factorial(n - 1);
     }
     //This function is Calalback for button Click Event
-    let clickCallback = (event) => {
+    varManager.clickCallback = (event) => {
         let allBtns = [...btns, ...trigoBtns, ...firstRowBtns];
         let selectedBtn = allBtns.filter((btn) => {
             //Here in some buttton's text there are span
@@ -278,49 +279,21 @@ let varManager = (function () {
         }
         isRad = !isRad;
     };
-    /*This all are Closures which used to manage the Variable of Current Scope
-    from Outside of this Scope
-    */
-    let changeInputContainer = (text) => {
+    // This all methods are exported outside of the namespace to use from other scope
+    varManager.changeInputContainer = (text) => {
         inputContainer.innerHTML += text;
     };
-    let changeUserTyped = (text) => {
-        userTyped.innerHTML = text;
-    };
-    let changeAnswerElement = (text) => {
-        answerElement.innerHTML = text;
-    };
-    let btnCountIncrement = () => {
+    varManager.btnCountIncrement = () => {
         btnCount++;
     };
-    let getBtnCount = () => {
+    varManager.getBtnCount = () => {
         return btnCount;
     };
-    let getBtnPerRow = () => {
+    varManager.getBtnPerRow = () => {
         return btnPerRow;
     };
-    let getAnswer = () => {
-        return answer;
-    };
-    let getData = () => {
+    varManager.getData = () => {
         return data;
     };
-    let updateData = (display, formula) => {
-        data = {
-            display, formula
-        };
-    };
-    return {
-        changeInputContainer,
-        changeUserTyped,
-        changeAnswerElement,
-        btnCountIncrement,
-        getBtnCount,
-        getBtnPerRow,
-        getAnswer,
-        updateData,
-        getData,
-        clickCallback,
-    };
-})();
+})(varManager || (varManager = {}));
 export default varManager;
