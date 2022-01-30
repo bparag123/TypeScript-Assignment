@@ -60,10 +60,7 @@ namespace GenerateHtml {
         trigobtnString += `<div>
             <button id=${btn.text} class=${btn.type}Btn>${btn.text}</button>
             </div>`
-        // let newBtn = document.createElement("button");
-        // newBtn.id = btn.text;
-        // newBtn.innerHTML = btn.text
-        // trigoBtnOptions.appendChild(newBtn)
+
         trigoBtnOptions.innerHTML = trigobtnString
 
     })

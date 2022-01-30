@@ -87,3 +87,7 @@ button > span {
   cursor: pointer;
   background-color: rgb(225, 252, 252);
 }
+
+.digit{
+  font-weight: bolder;
+}

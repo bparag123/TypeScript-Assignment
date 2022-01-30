@@ -1,4 +1,4 @@
-import { btns, trigoBtns, firstRowBtns, Type } from "./data.js";
+import { btns, trigoBtns, firstRowBtns, Type, Operations } from "./data.js";
 import CalculatorUtils from "./utils.js";
 /*This is IIFE which is used to Initialise the Variables and create a private Scope of
  some variables
@@ -86,17 +86,17 @@ var varManager;
         if (selectedBtn[0].type === Type.KEY) {
             //perform different tasks based on selected button's operation
             switch (selectedBtn[0].operation) {
-                case "clear":
+                case Operations.CLEAR:
                     data.display = [];
                     data.formula = [];
                     answerElement.innerHTML = "0";
                     break;
-                case "delete":
+                case Operations.DELETE:
                     data.display.pop();
                     data.formula.pop();
                     userTyped.innerHTML = data.display.join("");
                     break;
-                case "calculate":
+                case Operations.CALCULATE:
                     if (data.formula.length !== 0) {
                         //This Function finds Factorial Keyword from Formula
                         let searchedExpressions = CalculatorUtils.getFactorialKeyword();
@@ -131,13 +131,13 @@ var varManager;
                         answerElement.innerHTML = answer.toString();
                     }
                     break;
-                case "rad":
+                case Operations.RAD:
                     toggleRadian(selectedBtn[0]);
                     break;
-                case "inverseSecond":
+                case Operations.INVERSESECOND:
                     toggleInverse();
                     break;
-                case "f-e":
+                case Operations.F_E:
                     let myAnswer = answer.toExponential();
                     data.display = [myAnswer];
                     data.formula = [myAnswer];
@@ -150,45 +150,45 @@ var varManager;
         else if (selectedBtn[0].type === Type.MATH) {
             //perform different tasks based on selected button's operation
             switch (selectedBtn[0].operation) {
-                case "log10":
-                case "natural-log":
+                case Operations.LOG10:
+                case Operations.NATURAL_LOG:
                     data.display.push(selectedBtn[0].text);
                     data.formula.push(selectedBtn[0].formula);
                     data.display.push("(");
                     break;
-                case "factorial":
+                case Operations.FACTORIAL:
                     data.display.push("!");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "square":
+                case Operations.SQUARE:
                     data.display.push("^2");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "power":
+                case Operations.POWER:
                     data.display.push("^");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "10raiseto":
+                case Operations.TEN_RAISE_TO:
                     data.display.push("10^");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "inverse":
+                case Operations.INVERSE:
                     data.display.push("^(-1)");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "square-root":
+                case Operations.SQRT:
                     data.display.push("^0.5");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "exponent":
+                case Operations.EXP:
                     data.display.push("exp(");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "abs":
+                case Operations.ABS:
                     data.display.push("abs(");
                     data.formula.push(selectedBtn[0].formula);
                     break;
-                case "sign":
+                case Operations.SIGN:
                     answer *= -1;
                     userTyped.innerHTML = answer.toString();
                     data.display = [answer.toString()];
@@ -227,28 +227,28 @@ var varManager;
         }
         else if (selectedBtn[0].type == Type.MEMORY) {
             switch (selectedBtn[0].operation) {
-                case "clear":
+                case Operations.CLEAR:
                     memory = 0;
                     answerElement.innerHTML = "0";
                     break;
-                case "memoryStore":
+                case Operations.MEMORYSTORE:
                     memory = answer;
                     data.formula = [];
                     data.display = [];
                     answerElement.innerHTML = "0";
                     break;
-                case "result":
+                case Operations.RESULT:
                     data.display = [];
                     userTyped.innerHTML = memory.toString();
                     answerElement.innerHTML = memory.toString();
                     break;
-                case "memoryPlus":
+                case Operations.MEMORYPLUS:
                     memory += answer;
                     data.formula = [];
                     data.display = [];
                     answerElement.innerHTML = "0";
                     break;
-                case "memoryMinus":
+                case Operations.MEMORYMINUS:
                     memory -= answer;
                     data.formula = [];
                     data.display = [];
